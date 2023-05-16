@@ -1,7 +1,9 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
+import Session from "./components/Session"
+import Footer from './components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const openSans = Open_Sans({ subsets: ['latin-ext', 'cyrillic-ext'], weight: ['500', '600', '700'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -9,13 +11,18 @@ export const metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${openSans.className} bg-general w-screen h-screen flex justify-center items-center text-white`}>
+        <Footer />
+        <Session>
+          {children}
+        </Session>
+      </body>
     </html>
   )
 }
